@@ -1,7 +1,7 @@
 <!-- HTML -->
 <template>
 	<h1>Page</h1>
-  <Page msg="Gallery & To Do"/>
+  <Page msg="Gallery"/>
 </template>
 
 <!-- JavaScript -->
