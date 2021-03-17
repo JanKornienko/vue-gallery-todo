@@ -1,8 +1,10 @@
+<!-- HTML -->
 <template>
 	<h1>Page</h1>
   <Page msg="Gallery & To Do"/>
 </template>
 
+<!-- JavaScript -->
 <script>
 	import Page from './components/Page.vue'
 
@@ -14,6 +16,7 @@
 	}
 </script>
 
+<!-- CSS -->
 <style>
 	#app {
 		font-family: Avenir, Helvetica, Arial, sans-serif;
