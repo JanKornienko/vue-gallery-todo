@@ -1,7 +1,8 @@
 <!-- HTML -->
 <template>
-	{{ msg }}
-	<div class="container">
+	<h1>{{ txt }}</h1>
+	<!-- Gallery -->
+	<div class="galleryContainer">
 		<div class="left">
 			<img class="arrLeft" @click="prev()" src="../assets/icons/arrow.png" alt="Arrow Left">
 		</div>
@@ -14,6 +15,15 @@
 			<img class="arrRight" @click="next()" src="../assets/icons/arrow.png" alt="Arrow Right">
 		</div>
 	</div>
+	<hr>
+	<!-- To Do list -->
+	<div class="todoContainer">
+		<div class="todo" v-for="item in todoObject" :key="item">
+			<h3>{{ item.id }}:</h3>
+			<input type="checkbox" v-model="item.completed">
+			<h3>{{ item.title }}</h3>
+		</div>
+	</div>
 </template>
 
 <!-- JavaScript -->
@@ -23,7 +33,7 @@
 	export default {
 		name: 'Page',
 		props: {
-			msg: String
+			txt: String
 		},
 		data() {
 			return {
@@ -31,12 +41,18 @@
 				galleryUrl: '/albums/1/photos',
 				todoUrl: '/users/1/todos',
 				galleryObject: [],
+				todoObject: [],
 				index: 0
 			};
 		},
 		created() {
+			//API get for gallery
 			$.get(this.url + this.galleryUrl, (response) => {
 				this.galleryObject = response;
+			});
+			//API get for to do list
+			$.get(this.url + this.todoUrl, (response) => {
+				this.todoObject = response;
 			});
 		},
 		methods: {
@@ -60,15 +76,8 @@
 
 <!-- CSS -->
 <style scoped>
-	.arrLeft{
-		transform: rotate(90deg);
-	}
-
-	.arrRight{
-		transform: rotate(-90deg);
-	}
-
-	.container {
+	/* Gallery */
+	.galleryContainer {
 		display: flex;
 		justify-content: center;
 	}
@@ -83,5 +92,30 @@
 
 	.right {
 		margin-top: 330px;
+	}
+
+	.arrLeft{
+		transform: rotate(90deg);
+	}
+
+	.arrRight{
+		transform: rotate(-90deg);
+	}
+
+	/* To Do List */
+	.todoContainer {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		width: 800px;
+		margin: auto;
+	}
+
+	.todo {
+		display: flex;
+	}
+
+	input {
+		margin-left: 20px;
 	}
 </style>

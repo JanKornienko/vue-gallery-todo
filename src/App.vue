@@ -1,7 +1,6 @@
 <!-- HTML -->
 <template>
-	<h1>Page</h1>
-  <Page msg="Gallery"/>
+  <Page txt="Gallery and To Do List"/>
 </template>
 
 <!-- JavaScript -->
@@ -13,7 +12,7 @@
 		components: {
 			Page
 		}
-	}
+	};
 </script>
 
 <!-- CSS -->
